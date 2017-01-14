@@ -1,0 +1,12 @@
+cp /share/isilon/system/local/NGSTestSets/Illumina_HiSeq/paired_end/mixed_strand/RNAseq/1/OM/S17_L1_1.fq.gz rna1/
+dynamic mode
+cp /share/isilon/system/local/NGSTestSets/Illumina_HiSeq/paired_end/mixed_strand/RNAseq/1/OM/S17_L1_2.fq.gz rna1/
+dynamic mode
+cp /share/isilon/system/local/NGSTestSets/Illumina_HiSeq/paired_end/mixed_strand/RNAseq/1/OM/S27_L1_1.fq.gz rna1/
+dynamic mode
+cp /share/isilon/system/local/NGSTestSets/Illumina_HiSeq/paired_end/mixed_strand/RNAseq/1/OM/S27_L1_2.fq.gz rna1/
+dynamic mode
+cp /share/isilon/system/local/NGSTestSets/Illumina_HiSeq/paired_end/mixed_strand/RNAseq/1/SC/S18_L1_1.fq.gz rna2/
+dynamic mode
+cp /share/isilon/system/local/NGSTestSets/Illumina_HiSeq/paired_end/mixed_strand/RNAseq/1/SC/S18_L1_2.fq.gz rna2/
+dynamic mode
