@@ -1,0 +1,15 @@
+https://github.com/genome-in-a-bottle/giab_data_indexes
+
+Sample_U0a from NA12878 downloaded from ftp://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/data/NA12878/NIST_NA12878_HG001_HiSeq_300x/131219_D00360_005_BH814YADXX/Project_RM8398/Sample_U0a/
+(wget ftp://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/data/NA12878/NIST_NA12878_HG001_HiSeq_300x/131219_D00360_005_BH814YADXX/Project_RM8398/Sample_U0a/*)
+
+MD5sums were obtained from https://github.com/genome-in-a-bottle/giab_data_indexes/blob/master/NA12878/sequence.index.NA12878_Illumina300X_wgs_09252015
+
+Fastqs were merged to create 1 fastq pair per lane:
+
+cat U0a_CGATGT_L001_R1_001.fastq.gz U0a_CGATGT_L001_R1_002.fastq.gz U0a_CGATGT_L001_R1_003.fastq.gz U0a_CGATGT_L001_R1_004.fastq.gz U0a_CGATGT_L001_R1_005.fastq.gz > U0a_CGATGT_L001_R1.fastq.gz
+cat U0a_CGATGT_L001_R2_001.fastq.gz U0a_CGATGT_L001_R2_002.fastq.gz U0a_CGATGT_L001_R2_003.fastq.gz U0a_CGATGT_L001_R2_004.fastq.gz U0a_CGATGT_L001_R2_005.fastq.gz > U0a_CGATGT_L001_R2.fastq.gz
+
+cat U0a_CGATGT_L001_R1_001.fastq.gz U0a_CGATGT_L001_R1_002.fastq.gz U0a_CGATGT_L001_R1_003.fastq.gz U0a_CGATGT_L001_R1_004.fastq.gz U0a_CGATGT_L001_R1_005.fastq.gz > U0a_CGATGT_L001_R1.fastq.gz
+cat U0a_CGATGT_L001_R1_001.fastq.gz U0a_CGATGT_L001_R1_002.fastq.gz U0a_CGATGT_L001_R1_003.fastq.gz U0a_CGATGT_L001_R1_004.fastq.gz U0a_CGATGT_L001_R1_005.fastq.gz > U0a_CGATGT_L001_R1.fastq.gz
+
