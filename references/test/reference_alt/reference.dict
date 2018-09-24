@@ -1,0 +1,5 @@
+@HD	VN:1.0	SO:unsorted
+@SQ	SN:chr1	LN:15624	M5:2396ee6e40876965beb84b1c244e13a9	UR:file:///exports/sasc/testing/fixtures/reference_alt/reference.fasta
+@SQ	SN:chrM	LN:16569	M5:c68f52674c9fb33aef52dcf399755519	UR:file:///exports/sasc/testing/fixtures/reference_alt/reference.fasta
+@SQ	SN:alt1	LN:15623	M5:a23727eddbc83739bc5f70447bb99f94	UR:file:///exports/sasc/testing/fixtures/reference_alt/reference.fasta
+@SQ	SN:alt2	LN:15623	M5:ba15f3be5f3d7d4b02366d229a958c05	UR:file:///exports/sasc/testing/fixtures/reference_alt/reference.fasta
