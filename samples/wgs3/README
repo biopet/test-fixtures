@@ -1,0 +1,33 @@
+1. make VCF of made up variants (wgs3.vcf)
+2. make allele1 VCF by removing variants with a 0/1 genotype from wgs3.vcf (wgs3.allele1.vcf)
+3. make allele2 VCF by removing variants with a 1/0 genotype from wgs3.vcf (wgs3.allele2.vcf)
+4. generate fasta for allele1 using GATK 3.8 (wgs3.allele1.fasta)
+   - `java -jar GenomeAnalysisTK.jar -T FastaAlternateReferenceMaker -R /exports/sasc-testing/fixtures/references/test/reference/reference.fasta -V wgs3.allele1.vcf  -o wgs3.allele1.fasta`
+5. generate fasta for allele2 using GATK 3.8 (wgs3.allele2.fasta)
+   - `java -jar GenomeAnalysisTK.jar -T FastaAlternateReferenceMaker -R /exports/sasc-testing/fixtures/references/test/reference/reference.fasta -V wgs3.allele2.vcf  -o wgs3.allele2.fasta`
+6. merge fastas (wgs3.fasta)
+   - `cat wgs3.allele1.fasta wgs3.allele2.fasta > wgs3.fasta`
+7. rename chromosomes to 1,2,3,4
+8. generate fastq for lib1 using wgsim 1.8 (wgs3-lib1_R1.fastq, wgs3-lib1_R2.fastq)
+   - `wgsim -1 100 -2 100 -N 20000 wgs3.fasta wgs3-lib1_R1.fastq wgs3-lib1_R2.fastq`
+9. generate fastq for lob2 using wgsim 1.8 (wgs3-lib2_R1.fastq, wgs3-lib2_R2.fastq)
+   - `wgsim -1 100 -2 100 -N 20000 wgs3.fasta wgs3-lib2_R1.fastq wgs3-lib2_R2.fastq`
+10. run bwa mem version 0.7.17-r1188 for lib1 (wgs3-lib1.bam)
+   - `bwa mem /exports/sasc-testing/fixtures/references/test/reference/bwa/reference.fasta wgs3-lib1_R1.fastq wgs3-lib1_R2.fastq  -R '@RG\tID:wgs3-lib1\tLB:lib1\tPL:illumina\tSM:wgs3' | samtools sort -O BAM > wgs3-lib1.bam`
+11. run bwa mem version 0.7.17-r1188 for lib2 (wgs3-lib2.bam)
+   - `bwa mem /exports/sasc-testing/fixtures/references/test/reference/bwa/reference.fasta wgs3-lib2_R1.fastq wgs3-lib2_R2.fastq  -R '@RG\tID:wgs3-lib2\tLB:lib2\tPL:illumina\tSM:wgs3' | samtools sort -O BAM > wgs3-lib2.bam`
+12. merge bams using samtools 1.8 (wgs3.bam)
+   - `samtools merge wgs3.bam wgs3-lib1.bam wgs3-lib2.bam`
+13. generate index for wgs3.bam
+   - `samtools index wgs3.bam wgs3.bai`
+14. run somatic-variantcalling biowdl pipeline (at commit 15828fa69365ca112e1af092e099c79bf4b09754) with wgs1 as control on the BAM file to generate vardict, mutect2 and strelka paired vcfs (all vcfs in ./somatic_variantcalling_vcfs/paired)
+15. run somatic-variantcalling biowdl pipeline (at commit 15828fa69365ca112e1af092e099c79bf4b09754) without control on the BAM file to generate vardict, mutect2 and strelka unpaired/single vcfs (all vcfs in ./somatic_variantcalling_vcfs/single)
+16. create indel vcf by removing SNVs from wgs3.vcf (wgs3_indel.vcf)
+17. create SNV vcf by removing indels from wgs3.vcf (wgs3_snv.vcf)
+18. bgzip and index indel vcf using tabix 0.2.5 and bgzip (wgs3_indel.vcf.gz, wgs3_indel.vcf.gz.tbi)
+   - `bgzip -c wgs3_indel.vcf > wgs3_indel.vcf.gz`
+   - `tabix -p vcf wgs3_indel.vcf.gz`
+19. bgzip and index snv vcf using tabix 0.2.5 and bgzip (wgs3_snv.vcf.gz, wgs3_snv.vcf.gz.tbi)
+   - `bgzip -c wgs3_snv.vcf > wgs3_snv.vcf.gz`
+   - `tabix -p vcf wgs3_snv.vcf.gz `
+
